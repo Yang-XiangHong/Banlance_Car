@@ -2,6 +2,11 @@
 #include "stdio.h"
 #include "oled.h"
 
+extern int flag;
+
+#define DATA_HEAD	0xEF
+#define DATA_TAIL	0xFE
+
 extern uint8_t dat_Rxd;
 extern uint8_t dat;
 
@@ -15,6 +20,60 @@ int fputc(int ch, FILE *f)
 	while((USART1->SR&0X40)==0);//循环发送,直到发送完毕   
     USART1->DR = (int8_t) ch;      
 	return ch;
+}
+
+
+/* 发送字节函数 */
+void send_byte(uint8_t byte)
+{
+	USART_SendData(USART1, byte);
+	/* 等待发送完成 */
+	while(USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
+}
+/* 发送字符串函数 */
+void send_string(uint8_t *str)
+{
+	while(*str != '\0')
+	{
+		send_byte(*str++);
+	}
+}
+/* 发送数组函数 */
+void send_buf(uint8_t *buf, uint16_t len)
+{
+	uint16_t i;
+	for(i=0; i<len; i++)
+	{
+		send_byte(buf[i]);
+	}
+}
+
+void SendData(int rec_data)
+{
+	int i = 0;
+	int data[4];
+	
+	data[2] = rec_data;
+	
+	data[0] = 0xa3;		//帧头
+	data[1] = 0xb3;		//帧头
+	data[3] = 0xc3;		//帧尾
+	
+	while(i<4)
+	{
+		USART_SendData(USART1, data[i++]);
+		while(USART_GetFlagStatus(USART1, USART_FLAG_TC) != SET);	//等待发送完成，避免发送过快
+	}
+}
+
+void send_pack(void)
+{
+	send_byte(0xa3);	/* 帧头 */
+	send_byte(0xb3);	/* 帧头 */
+	
+	send_byte(flag);
+	
+	send_byte(0xc3);	/* 帧尾 */
 }
 
 void uart_init(u32 bound)
@@ -62,10 +121,9 @@ void USART1_IRQHandler(void)                	//串口1中断服务程序
 {
 	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
 	{
-		USART_ClearFlag(USART1,USART_FLAG_RXNE);
 		USART_ClearITPendingBit(USART1,USART_IT_RXNE);
 	}
-	USART_ClearITPendingBit(USART1,USART_IT_RXNE);
+	
 } 
 
 

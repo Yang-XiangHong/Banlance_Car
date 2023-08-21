@@ -35,6 +35,6 @@ uint16_t AD_GetValue(uint8_t ADC_Channel)
 	ADC_RegularChannelConfig(ADC1, ADC_Channel, 1, ADC_SampleTime_55Cycles5);		//ADC_Channel_0，通道0，对应PA0， “1”代表序列1，ADC_SampleTime_55Cycles5代表采样时间55.5*ADCCLK(T)
 	ADC_SoftwareStartConvCmd(ADC1, ENABLE);		//软件触发ADC转换
 	while(ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET);		//等待转换完成
-	return ADC_GetConversionValue(ADC1);		//获取转换值
+	return ADC_GetConversionValue(ADC1) / 1000;		//获取转换值
 	  
 }

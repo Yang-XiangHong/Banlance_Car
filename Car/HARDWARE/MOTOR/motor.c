@@ -22,10 +22,10 @@ void Set_Pwm(int moto1,int moto2)
 {
 	if(moto1<0)			AIN2=1,			AIN1=0;
 	else 	          AIN2=0,			AIN1=1;
-	PWMA=myabs(moto1)+200;
+	PWMA=myabs(moto1);
 	if(moto2<0)	BIN1=0,			BIN2=1;
 	else        BIN1=1,			BIN2=0;
-	PWMB=myabs(moto2)+200;
+	PWMB=myabs(moto2);
 }
 
 

@@ -88,6 +88,8 @@ extern int Turn_Speed;
 
 extern float Tur_Kp,Tur_Kd;
 
+extern uint8_t rxd_flag;
+extern uint8_t rxd_buf[3];
 
 
 

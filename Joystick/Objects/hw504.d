@@ -29,4 +29,5 @@
 .\objects\hw504.o: .\Library\stm32f10x_wwdg.h
 .\objects\hw504.o: .\Library\misc.h
 .\objects\hw504.o: HardWare\AD.h
-.\objects\hw504.o: .\System\Delay.h
+.\objects\hw504.o: .\System\delay\Delay.h
+.\objects\hw504.o: .\System\sys\sys.h

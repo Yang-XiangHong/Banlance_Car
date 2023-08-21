@@ -1,5 +1,5 @@
-.\objects\usart.o: Hardware\usart.c
-.\objects\usart.o: Hardware\usart.h
+.\objects\usart.o: System\usart\usart.c
+.\objects\usart.o: .\System\sys\sys.h
 .\objects\usart.o: .\Start\stm32f10x.h
 .\objects\usart.o: .\Start\core_cm3.h
 .\objects\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -29,5 +29,5 @@
 .\objects\usart.o: .\Library\stm32f10x_usart.h
 .\objects\usart.o: .\Library\stm32f10x_wwdg.h
 .\objects\usart.o: .\Library\misc.h
+.\objects\usart.o: System\usart\usart.h
 .\objects\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\usart.o: Hardware\oled.h

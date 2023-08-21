@@ -28,9 +28,13 @@
 .\objects\main.o: .\Library\stm32f10x_usart.h
 .\objects\main.o: .\Library\stm32f10x_wwdg.h
 .\objects\main.o: .\Library\misc.h
-.\objects\main.o: .\System\Delay.h
+.\objects\main.o: .\System\delay\Delay.h
+.\objects\main.o: .\System\sys\sys.h
 .\objects\main.o: .\Hardware\OLED.h
 .\objects\main.o: .\Hardware\HW504.h
 .\objects\main.o: .\Hardware\usart.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: .\Hardware\Control\control.h
+.\objects\main.o: .\Hardware\MPU6050\mpu6050.h
+.\objects\main.o: .\Hardware\MPU6050\mpuiic.h
+.\objects\main.o: .\Hardware\MPU6050\eMPL\inv_mpu.h

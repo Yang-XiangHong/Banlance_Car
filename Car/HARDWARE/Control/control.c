@@ -3,8 +3,8 @@
 float Med_Angle = 0 ;        //机械中值
 
 float 
-    Vertical_Kp = 200,        //直立环Kp
-    Vertical_Kd = 1;        //直立环Kd
+    Vertical_Kp = 550,        //直立环Kp
+    Vertical_Kd = 1.5;        //直立环Kd
 float 
     Velocity_Kp = 60,        //速度环Kp
     Velocity_Ki = 0.3;        //速度环Ki

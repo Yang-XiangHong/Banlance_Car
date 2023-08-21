@@ -47,7 +47,6 @@ void TIM5_IRQHandler(void)   //TIM3中断
 		Moto2=Balance_Pwm-Velocity_Pwm-Turn_Pwm;      //===计算右轮电机最终PWM
 		Xianfu_Pwm();  									  //===PWM限幅
 		Turn_Off(roll);			 			  //===检查角度以及电压是否正常
-		temp = Moto1;
 		Set_Pwm(Moto1,Moto2);                                     //===赋值给PWM寄存器  
 
 		TIM_ClearITPendingBit(TIM5, TIM_IT_Update);  //清除TIMx的中断待处理位:TIM 中断源 
